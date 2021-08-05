@@ -1,0 +1,22 @@
+<view>
+  <block wx:for="{{goodsList}}" wx:key="{{productId}}">
+    <view class="promotion-list">
+      <view class="image-container">
+        <image src="{{item.pic}}" class="img" />
+        <view class="image-cover" wx:if="{{item.saleOut}}">
+          <view class="cover-info">已抢完</view>
+        </view>
+      </view>
+      
+      <view class="goods-name">{{item.name}}</view>
+      <view class="goods-price" wx:if="{{hasToken}}">￥{{item.minPrice}}<view class="other-price">￥{{item.originalPrice}}</view></view>
+      <view class="goods-price" wx:if="{{!hasToken}}">￥询价</view>
+      <view class="progress">
+      <progress percent="{{item.percent}}" stroke-width="10" activeColor="#fb2242" backgroundColor="#fbb4ac" border-radius="4" />
+      </view>
+      <view class="progress-info">已抢{{item.hasBuyQty}}份</view>
+      <view class="to-buy" bindtap="toDetailsTap" data-id="{{item.productId}}" data-promotionId="{{promotionId}}" data-promotionType="{{promotionType}}">{{promotionType=='Being'?'马上抢':'去看看'}}</view>
+    </view>
+   
+  </block>
+</view>

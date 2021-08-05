@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="wxapp_product_category_view_tree_ent_2526" model="ir.ui.view">
+            <field name="name">wxapp.product.category.view_tree_ent</field>
+            <field name="model">wxapp.product.category</field>
+            <field name="inherit_id" ref="oejia_weshop.wxapp_product_category_view_tree_1006" />
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <data><xpath expr="//field[@name='pid']" position="after">
+                <field name="is_tag"/>
+            </xpath>
+        </data>
+            </field>
+        </record>
+        <record id="wxapp_product_category_view_form_ent_2527" model="ir.ui.view">
+            <field name="name">wxapp.product.category.view_form_ent</field>
+            <field name="model">wxapp.product.category</field>
+            <field name="inherit_id" ref="oejia_weshop.wxapp_product_category_view_form_1007" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <data><xpath expr="//field[@name='name']" position="after">
+                <field name="alias"/>
+                <field name="is_tag"/>
+                <field name="tag_id" attrs="{'invisible': [('is_tag', '!=', True)]}"/>
+            </xpath>
+                <xpath expr="//field[@name='pid']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('is_tag', '=', True)]}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='product_template_ids']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('is_tag', '=', True)]}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='child_ids']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('is_tag', '=', True)]}</attribute>
+                </xpath>
+        </data>
+            </field>
+        </record>
+
+    </data>
+</openerp>

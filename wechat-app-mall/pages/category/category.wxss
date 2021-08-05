@@ -1,0 +1,172 @@
+/* pages/category/category.wxss */
+
+page {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.left {
+  width: 200rpx;
+  /* min-width: 200rpx; */
+  flex-shrink: 0;
+  background-color: #eee;
+}
+
+.right {
+  /* width: calc(100%-200rpx); */
+  flex-grow: 1;
+  background-color: white;
+}
+
+.category-item {
+  width: 100%;
+  height: 160rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-item-active {
+  background-color: white;
+}
+
+.goodsWrap-category {
+  margin-left: 20rpx;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.goods-item {
+  width: 100%;
+  display: flex;
+  padding: 5px;
+  flex-direction: row;
+  margin-left: 20rpx;
+  align-items: center;
+  justify-content: flex-start;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+
+.goods-description {
+  display: flex;
+  flex-direction: row;
+}
+
+.goods-title{
+  width: 280rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 24rpx;
+  padding: 24rpx 0 0rpx 0;
+  color:#000;
+  margin-left: 24rpx;
+  font-weight: bold;
+}
+
+.goods-price{
+  overflow: hidden;
+  font-size: 24rpx;
+  padding: 24rpx 0;
+  color:#e64340;
+  margin-left: 24rpx;
+}
+
+.goods-pic {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.goods-info {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 5px 0px 5px;
+  height: 80px;
+  justify-content: space-between;
+}
+
+.add-sub-goods {
+  max-height: 80px;
+  margin-left: 50rpx;
+  padding-top: 140rpx;
+}
+
+
+.jiesuan-box{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100rpx;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    border-bottom:1px solid #eee; 
+    border-top:1px solid #eee; 
+    background-color: #fff;
+    z-index: 999;
+}
+
+.jiesuan-box .to-pay-btn{
+    width:240rpx;
+    text-align: center;
+    line-height: 100rpx;
+    background-color: #e64340;
+    font-size:32rpx;
+    color:#ffffff;
+    border-radius: 0;
+}
+
+.to-pay-btn::after{
+    border-radius: 0;
+}
+
+.jiesuan-box  .left-price{
+    display: flex;
+    width: 510rpx;
+    justify-content: space-between;
+    line-height: 100rpx;
+    padding: 0 30rpx 0 0;
+    font-size:28rpx;
+    box-sizing: border-box;
+}
+.jiesuan-box .total{
+    color: #e64340;
+    margin-left: 150rpx;
+}
+
+.jiesuan-box .cart-btn {
+  position: fixed;
+  max-width: 80rpx;
+  max-height:80rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  margin-left: 20rpx;
+}
+.jiesuan-box .shop-num{
+  position: absolute;
+  color:#e64340;
+  left: 94rpx;
+  bottom:36rpx;
+}
+.goods-price-line{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+

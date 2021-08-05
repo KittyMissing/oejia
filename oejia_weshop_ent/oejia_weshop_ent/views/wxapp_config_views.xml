@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="wxapp_config_view_ent_inherit_1031" model="ir.ui.view">
+            <field name="name">wxapp.config.view_ent_inherit</field>
+            <field name="model">wxapp.config</field>
+            <field name="inherit_id" ref="oejia_weshop.wxapp_config_view_form_1003" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <data><xpath expr="//header" position="inside">
+				    <button name="restore_product_img_url" type="object" string="刷新商城图片URL缓存"/>
+                </xpath>
+                <xpath expr="//field [@name='team_id']" position="after">
+                    <field name="user_id"/>
+                </xpath>
+                <xpath expr="//field [@name='mall_name']/.." position="after">
+                    <group string="微信支付配置" colspan="4">
+                        <field name="wechat_pay_id"/>
+                        <field name="wechat_pay_secret"/>
+                    </group>
+                    <group string="其他配置" colspan="4">
+                        <group colspan="4">
+                        <field name="recharge_open"/>
+                        </group>
+                        <group colspan="4">
+                        <field name="enable_no_service_period"/>
+                        </group>
+                        <group colspan="4">
+                        <div attrs="{'invisible': [('enable_no_service_period', '!=', True)]}" style="margin-left:100px">
+                            <span>禁用下单开始时间 </span>
+                            <field name="no_service_start_hour" class="oe_inline"/>
+                            <span> 点, </span>
+                            <field name="no_service_start_minute" class="oe_inline"/>
+                            <span> 分，持续</span>
+                            <field name="no_service_long" class="oe_inline"/>
+                            <span> 分钟</span>
+                        </div>
+                        </group>
+                        <group colspan="4">
+                        <field name="auto_cancel_expired_order"/>
+                        </group>
+                   </group>
+                </xpath>
+                <xpath expr="//field [@name='secret']" position="after">
+                    <field name="msgtpl_order_created"/>
+                    <field name="msgtpl_order_paid"/>
+                    <field name="msgtpl_order_delivery"/>
+                    <field name="msgtpl_order_closed"/>
+                    <field name="msgtpl_order_confirmed"/>
+                </xpath>
+                <xpath expr="//field [@name='sub_domain']" position="attributes">
+                    <attribute name="groups">base.group_no_one</attribute>
+                </xpath>
+                <xpath expr="//header" position="inside">
+                    <button name="restore_attr_val_str" type="object" string="加载产品变体数据"/>
+                </xpath>
+            </data>
+            </field>
+        </record>
+
+    </data>
+</openerp>

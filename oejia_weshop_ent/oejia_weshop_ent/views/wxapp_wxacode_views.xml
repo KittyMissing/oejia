@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="wxapp_wxacode_view_tree_1746" model="ir.ui.view">
+            <field name="name">wxapp.wxacode.view_tree</field>
+            <field name="model">wxapp.wxacode</field>
+            <field name="type">tree</field>
+            <field name="priority">999</field>
+            <field name="arch" type="xml">
+                <tree string="小程序码">
+               <field name="open_id"/>
+               <field name="page"/>
+               <field name="scene"/>
+               <field name="wxacode_img"/>
+                </tree>
+            </field>
+        </record>
+        <record id="wxapp_wxacode_view_form_1747" model="ir.ui.view">
+            <field name="name">wxapp.wxacode.view_form</field>
+            <field name="model">wxapp.wxacode</field>
+            <field name="type">form</field>
+            <field name="priority">999</field>
+            <field name="arch" type="xml">
+                <form string="小程序码" version="7.0">
+                    <sheet>
+                    <group>
+               <field name="open_id"/>
+               <field name="page"/>
+               <field name="scene"/>
+               <field name="wxacode_img"/>
+                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="wxapp_wxacode_action_602" model="ir.actions.act_window">
+            <field name="name">小程序码</field>
+            <field name="res_model">wxapp.wxacode</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('wxapp_wxacode_view_tree_1746')}),
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('wxapp_wxacode_view_form_1747')}),
+                    ]"/>
+        </record>
+        <menuitem action="wxapp_wxacode_action_602" id="wxapp_wxacode_menuitem_455_1573923286" name="小程序码" parent="oejia_studio.parent_menu_216" sequence="10"/>
+
+    </data>
+</openerp>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="wxapp_refund_image_view_tree_1805" model="ir.ui.view">
+            <field name="name">wxapp.refund.image.view_tree</field>
+            <field name="model">wxapp.refund.image</field>
+            <field name="type">tree</field>
+            <field name="priority">999</field>
+            <field name="arch" type="xml">
+                <tree string="售后图片">
+               <field name="image" widget="image" height="150"/>
+                </tree>
+            </field>
+        </record>
+        <record id="wxapp_refund_image_view_form_1806" model="ir.ui.view">
+            <field name="name">wxapp.refund.image.view_form</field>
+            <field name="model">wxapp.refund.image</field>
+            <field name="type">form</field>
+            <field name="priority">999</field>
+            <field name="arch" type="xml">
+                <form string="售后图片" version="7.0">
+                    <sheet>
+                    <group>
+               <field name="image" widget="image"/>
+                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</openerp>

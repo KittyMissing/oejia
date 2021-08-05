@@ -1,0 +1,57 @@
+<view class="applyTableTitle">供应商申请表</view>
+<view class="content">
+  <form bindsubmit="submitSupplierInfo" bindreset="resetSupplierInfo">
+    <view class="">公司名称:</view>
+    <view class="input-box">
+      <input name="companyName" value="{{form.companyName}}" />
+    </view>
+
+    <view class="">联系地址:</view>
+    <view class="input-box">
+      <input name="address" />
+    </view>
+
+    <view class="">联系人:</view>
+    <view class="input-box">
+      <input name="contact" value="{{form.contact}}" />
+    </view>
+
+    <view class="">职务:</view>
+    <view class="input-box">
+      <input name="role" value="{{form.role}}" />
+    </view>
+
+    <view class="">联系电话:</view>
+    <view class="input-box">
+      <input name="phone" type="number" value="{{form.phone}}" />
+    </view>
+
+    <view class="">名片</view>
+    <view class="images">
+      <view wx:if="{{cardImages.length > 0}}" wx:for="{{cardImages}}" wx:key="item">
+        <image src="{{item}}" class="upload-icon" bindtap="" />
+        <image src="/images/popup-close.png" class="delete-icon" bindtap="removeImage" data-index="{{index}}" data-type="cardImages" />
+      </view>
+      <view wx:if="{{cardImages.length < 1}}" bindtap="uploadImage" data-id="cardImages">
+        <image src="/images/uploadIcon.png" class="upload-icon" />
+      </view>
+    </view>
+    <view class="">样品图片</view>
+    <view class="images">
+      <view wx:if="{{sampleImages.length > 0}}" wx:for="{{sampleImages}}" wx:key="item">
+        <image src="{{item}}" class="upload-icon" bindtap="handleImagePreview" />
+        <!-- 移除图片的按钮  -->
+        <image src="/images/popup-close.png" class="delete-icon" bindtap="removeImage" data-index="{{index}}" data-type="sampleImages" />
+      </view>
+      <image wx:if="{{sampleImages.length < 8}}" src="/images/uploadIcon.png" class="upload-icon" bindtap="uploadImage" data-id="sampleImages" />
+    </view>
+    <view class="">特点自述</view>
+    <view class="input-box">
+      <textarea name="description" value="{{form.description}}" />
+    </view>
+    <view class="btn-area">
+      <button formType="submit">提交</button>
+    </view>
+
+  </form>
+</view>

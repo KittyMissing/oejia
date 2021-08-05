@@ -1,0 +1,48 @@
+<!--pages/components/promotion-card.wxml-->
+<view class="promotion-container">
+  <view class="{{promotionType=='Advance'?'advance promotion-head':'promotion-head'}}">
+    <view class="title">
+      <view>{{promotionType=='Being'?'特价':'活动'}}</view>
+      <view>{{promotionType=='Being'?'秒杀':'预告'}}</view>
+    </view>
+    <view class="type">{{promotionType=='Being'?'正在疯抢':'即将开始'}}</view>
+    <block wx:if="{{promotionType=='Being'}}">
+      <view class="count-down">
+        <view class="time-title">距离结束 </view>
+        <block wx:if="{{day}}">{{day}}天</block>{{hour}}:{{min}}:{{sec}}
+        </view>
+    </block>
+    <block wx:elif="{{promotionType=='Advance'}}">
+      <view class="count-down" style="margin-top: 38rpx; font-size:28rpx;text-align: center;width: 45%;">
+        <block>{{timeStr}}</block>
+      </view>
+    </block>
+    <view class='more' bindtap="toPromotionList" data-promotionId="{{promotionId}}">
+      <span>更多</span>
+      <span class='more-icon'>></span>
+    </view>
+  </view>
+  <view class="promotion-content">
+    <swiper autoplay interval="{{3000}}" duration="{{1000}}" style="height: 260rpx;">
+      <block wx:for="{{goodsList}}" wx:key="id">
+        <swiper-item >
+          <view class="image-container">
+            <image src="{{item.pic}}" class="img" />
+            <view class="image-cover" wx:if="{{item.saleOut}}">
+              <view class="cover-info">已抢完</view>
+            </view>
+          </view>
+         <view class="goods-name">{{item.name}}</view>
+         <view class="goods-index">{{index+1}}/{{goodsList.length}}</view>
+         <view class="goods-price" wx:if="{{hasToken}}">￥{{item.minPrice}}<view class="other-price">￥{{item.originalPrice}}</view></view>
+         <view class="goods-price" wx:if="{{!hasToken}}">￥询价</view>
+         <view class="progress">
+          <progress percent="{{item.percent}}" stroke-width="10" activeColor="#fb2242" backgroundColor="#fbb4ac" border-radius="4" />
+         </view>
+         <view class="progress-info">已抢{{item.hasBuyQty}}份</view>
+         <view class="to-buy" bindtap="toDetailsTap" data-id="{{item.productId}}" data-promotionId="{{promotionId}}" data-promotionType="{{promotionType}}">{{promotionType=='Being'?'马上抢':'去看看'}}</view>
+        </swiper-item>        
+      </block>
+    </swiper>
+  </view>
+</view>

@@ -1,0 +1,8 @@
+{
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "addSubGoods": "../components/add-sub-goods/addSubGoods",
+    "promotionCard": "../components/promotion-card/promotionCard"
+  }
+}
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="product_template_form_wxapp_inherit_ent_1025" model="ir.ui.view">
+            <field name="name">product.template.form.wxapp_inherit_ent</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="oejia_weshop.product_template_form_wxapp_inherit_1020" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <data><xpath expr="//field[@name='qty_public_tpl']" position="replace">
+                    <field name="logistics_id"/>
+                    <field name="partner_cate_id"/>
+                    <field name="no_qty_check"/>
+                    <field name="enable_uom_select"/>
+                    <field name="sold_count"/>
+                    <field name="tag_ids" widget="many2many_tags"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+    </data>
+</openerp>

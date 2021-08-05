@@ -1,0 +1,19 @@
+<view style='display:flex;'>
+ <view wx:if="{{stores < 1}}">
+    <image src="/images/cart/addDisabled.png" class="add-cart-btn btn-disabled" bindtap="tapAddGoods" />
+  </view>
+  <view wx:elif="{{buyNum === 0}}">
+    <image src="/images/cart/addGoods.png" class="add-cart-btn" bindtap="tapAddGoods" catchlongtap="tapNumEdit"/>
+  </view>
+  <block wx:elif="{{buyNum === stores}}">
+    <image src="/images/cart/subGoods.png" class="sub-cart-btn" bindtap="subGoods" />
+    <view class="buy-num">{{buyNum}}</view>
+    <image src="/images/cart/addDisabled.png" class="add-cart-btn" bindtap="tapAddGoods"/>
+  </block>
+  <block wx:else>
+    <image src="/images/cart/subGoods.png" class="sub-cart-btn" bindtap="subGoods" />
+    <view class="buy-num">{{buyNum}}</view>
+    <image src="/images/cart/addGoods.png" class="add-cart-btn" bindtap="tapAddGoods" catchlongtap="tapNumEdit"/>
+  </block>
+  <inputModal wx:if="{{showInputModal}}" bind:cancelBuyNum='onCancelBuyNum' bind:confirmBuyNum='onConfirmBuyNum' buyNum="{{buyNum}}"/>
+</view>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="sale_order_view_form_1029" model="ir.ui.view">
+            <field name="name">sale.order.view_form</field>
+            <field name="model">sale.order</field>
+            <field name="type">form</field>
+            <field name="priority">999</field>
+            <field name="arch" type="xml">
+                <form string="销售订单" version="7.0">
+                    <sheet>
+                    <group>
+               <field name="shipper_id"/>
+               <field name="shipper_no"/>
+               <field name="customer_status" invisible="1"/>
+                    </group>
+                    <footer>
+                        <button string="保存" name="close_dialog" type="object" class="btn-primary"/>
+                        <button string="取消" class="btn-secondary" special="cancel"/>
+                    </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="sale_order_form_weshop_inherit_1030" model="ir.ui.view">
+            <field name="name">sale.order.form_weshop_inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <data>
+		<xpath expr="//button[@name='action_view_invoice']" position="after">
+                        <field name="number_goods" invisible="1"/>
+                        <button class="btn-warning" icon="fa-dollar" name="check_pay_window" string="确认支付" type="object" attrs="{'invisible': [('customer_status', '!=', 'unpaid')]}"/>
+                        <button class="btn-success" icon="fa-truck" name="delivery_window" string="确认发货" type="object" attrs="{'invisible': [('customer_status', '!=', 'pending')]}"/>
+                </xpath>
+		<xpath expr="//field[@name='validity_date']" position="before">
+                        <field name="customer_status" attrs="{'invisible': [('number_goods', '=', 0)]}" readonly="1" string="电商状态"/>
+                </xpath>
+		</data>
+            </field>
+        </record>
+        <record id="sale_order_search_inherit_wxapp_quotation_1177" model="ir.ui.view">
+            <field name="name">sale.order.search.inherit_wxapp.quotation</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter" />
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='my_sale_orders_filter']" position="after">
+
+                </xpath>
+            </field>
+        </record>
+        <record id="sale_order_tree_weshop_1655" model="ir.ui.view">
+            <field name="name">sale.order.tree.weshop</field>
+            <field name="model">sale.order</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Quotation" class="o_sale_order" decoration-bf="message_needaction==True" decoration-muted="state=='cancel'">
+                    <field name="message_needaction" invisible="1"/>
+                    <field name="name" string="Quotation Number"/>
+                    <field name="date_order" string="Quotation Date"/>
+                    <field name="partner_id"/>
+                    <field name="user_id"/>
+                    <field name="amount_total" sum="Total Tax Included" widget="monetary"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="state"/>
+                    <field name="create_date"/>
+                    <field name="customer_status" string="电商状态"/>
+                    <field name="invoice_status"/>
+                </tree>
+            </field>
+        </record>
+        <record id="sale_order_action_476" model="ir.actions.act_window">
+            <field name="name">电商订单</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form,calendar,pivot,graph</field>
+            <field name="target">current</field>
+            <field name="view_id" ref="oejia_weshop.sale_order_tree_weshop_1655"/>
+            <field name="context">{'hide_sale': True}</field>
+            <field name="domain" eval="[('team_id', '=', ref('oejia_weshop.crm_team_data_3'))]"/>
+            <field name="help" type="html"><p class="oe_view_nocontent_create">
+                暂无订单
+              </p></field>
+        </record>
+        <menuitem action="sale_order_action_476" id="sale_order_menuitem_335_1536754696" name="订单" parent="parent_menu_319_1536754696" sequence="0" groups="oejia_weshop.group_wxapp_sale"/>
+
+    </data>
+</openerp>

@@ -1,0 +1,11 @@
+.price {
+  color:#e64340;
+  font-weight: bold;
+}
+.page__bd {
+  padding-top: 36px;
+}
+
+.page__bd .weui-toptips{
+  margin-top: 36px;
+}

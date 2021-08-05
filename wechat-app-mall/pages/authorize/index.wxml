@@ -1,0 +1,9 @@
+<view class="container">
+    <form bindsubmit="bindSave">
+    <image class="logo" src="/images/wx.png" mode="widthFix" />
+    <view class="title">微信授权</view>
+    <view class="profile">登录后可享受更多优质服务</view>
+    <button type="primary" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class="weui-btn mini-btn">快速登录</button>
+    <button type="default" bindtap="bindCancel" class="weui-btn mini-btn">暂不登录</button>
+    </form>
+</view>

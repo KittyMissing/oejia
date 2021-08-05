@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "inputModal": "../components/input-modal/index"
+  }
+}

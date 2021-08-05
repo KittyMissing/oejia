@@ -1,0 +1,3 @@
+pycrypto
+xmltodict==0.11.0
+itsdangerous==0.24

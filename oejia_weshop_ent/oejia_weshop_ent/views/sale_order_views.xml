@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="sale_order_form_weshop_ent_inherit_1030" model="ir.ui.view">
+            <field name="name">sale.order.form_weshop_ent_inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <data>
+		        <xpath expr="//button[@name='action_view_invoice']" position="after">
+                        <button class="btn-warning" icon="fa-dollar" name="refund_window_action" string="售后退换" type="object" attrs="{'invisible': [('has_refund', '=', False)]}"/>
+                </xpath>
+		        <xpath expr="//field[@name='validity_date']" position="before">
+                        <field name="has_refund" readonly="1"/>
+                        <field name="peisong_type" readonly="1"/>
+                </xpath>
+		</data>
+            </field>
+        </record>
+
+    </data>
+</openerp>

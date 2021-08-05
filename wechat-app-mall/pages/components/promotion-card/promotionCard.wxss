@@ -1,0 +1,181 @@
+/* pages/components/promotion-card.wxss */
+.promotion-container{
+   padding: 5px;
+   background-color: #FFF;
+}
+.promotion-head{
+  background-image: linear-gradient(to right, #fb2142 , #fe6853);
+  color: white;
+  border-top-left-radius: 25rpx;
+  border-top-right-radius: 25rpx;
+  height: 110rpx;
+  display: flex;
+  position: relative;
+}
+.advance{
+  background-image: linear-gradient(to right, #f37335 , #f38b0b);
+}
+.promotion-container .promotion-head .title{
+  display: inline-block;
+  font-size: 13px;
+  height: 90rpx;
+  padding: 12rpx 20rpx 10rpx;
+  border-right: 1px solid #FFF;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.promotion-container .promotion-head .count-down{
+  display: inline-block;
+  font-size: 32rpx;
+  line-height: 34rpx;
+  margin-top: 8rpx;
+}
+.promotion-container .promotion-head .time-title{
+  display: inline-block;
+  font-size: 20rpx;
+  line-height: 40rpx;
+  margin-top: 30rpx;
+  margin-left: 10rpx;
+}
+.promotion-container .promotion-head .type{
+  display: inline-block;
+  padding: 0 15rpx;
+  padding-bottom: 10rpx;
+  line-height: 50rpx;
+  height: 50rpx;
+  font-size: 32rpx;
+  background-color: #FFF;
+  color:#fb2142;
+  font-weight: 500;
+  border-radius: 25rpx;
+  margin-top: 30rpx;
+  margin-left: 100rpx;
+}
+.promotion-head .more{
+  display: inline-block;
+  text-align: center;
+  font-size: 26rpx;
+  right: 0rpx;
+  position: absolute;
+  padding-top: 36rpx;
+  padding-right: 20rpx;
+}
+.promotion-head .more .more-icon{
+  border-radius: 50%;
+  background-color: #FFF;
+  color: #fc6753;
+  font-size: 26rpx;
+  width: 30rpx;
+  height: 30rpx;
+  line-height: 26rpx;
+  display: inline-block;
+  margin-left: 15rpx;
+}
+.promotion-container .promotion-content{
+  background-color: #FFF;
+  border-bottom-left-radius: 25rpx;
+  border-bottom-right-radius: 25rpx;
+  height: 260rpx;
+}
+.promotion-content .image-container{
+  padding-top: 30rpx;
+  padding-left: 25rpx;
+  width: 200rpx;
+  height: 0;
+  padding-bottom: 200rpx;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+ 
+}
+.promotion-content .image-container .img{
+  width: 200rpx;
+  max-height: 200rpx;
+  position: absolute;
+}
+.promotion-content .goods-name{
+  vertical-align: top;
+  display: inline-block;
+  font-size: 32rpx;
+  font-weight: 500;
+  padding: 30rpx 0 0 30rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 400rpx;
+}
+.promotion-content .goods-price{
+  display: inline-block;
+  color: #fb2242;
+  font-size: 42rpx;
+  left: 250rpx;
+  position: absolute;
+  bottom: 20rpx;
+}
+.promotion-content .other-price{
+  display: inline-block;
+  color: #b2adb1;
+  font-size: 30rpx;
+  padding-left: 10rpx;
+  text-decoration: line-through;
+}
+.promotion-content .progress{
+  width: 200rpx;
+  position: absolute;
+  left: 250rpx;
+  bottom: 100rpx;
+}
+.promotion-content .progress-info{
+  display: inline-block;
+  color: #b2adb1;
+  font-size: 24rpx;
+  position: absolute;
+  left: 460rpx;
+  bottom: 92rpx;
+}
+.promotion-content .goods-index{
+  display: inline-block;
+  background-color: #f7f5f9;
+  position: absolute;
+  right: 18rpx;
+  top: 30rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  color: #c2bfc3;
+  padding: 0 14rpx;
+}
+.promotion-content .to-buy{
+  display: inline-block;
+  background-image: linear-gradient(to right, #a9d649 , #80c03b);
+  position: absolute;
+  right: 18rpx;
+  bottom: 30rpx;
+  border-radius: 30rpx;
+  font-size: 20rpx;
+  color: #FFF;
+  padding: 10rpx 20rpx;
+}
+.promotion-content .image-container .image-cover{
+  width: 200rpx;
+  height: 200rpx;
+  display: inline-block;
+  background: rgba(76, 76, 76, 0.5);
+  z-index: 1001;
+  position: absolute;
+  text-align: center
+}
+.promotion-content .image-container .image-cover .cover-info{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  display: inline-block;
+  background: rgba(76, 76, 76, 0.7);
+  z-index: 1002;
+  position: absolute;
+  font-size: 30rpx;
+  color: #FFF;
+  line-height: 120rpx;
+  top: 20%;
+  left: 20%;
+}

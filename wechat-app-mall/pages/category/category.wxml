@@ -1,0 +1,55 @@
+<!--pages/category/category.wxml-->
+<view class='content'>
+
+  <scroll-view class='left' scroll-y="true" scroll-into-view="{{categoryToView}}">
+
+    <block wx:for="{{categories}}" wx:key="id">
+
+      <view class="category-item {{categorySelected==item.scrollId?'category-item-active':''}}" data-id='{{item.scrollId}}' id='{{item.scrollId}}' bindtap='onCategoryClick'>
+        <text style="font-size: 12px; color: gray">{{item.name}}</text>
+      </view>
+
+    </block>
+
+  </scroll-view>
+
+  <scroll-view class='right' scroll-y="true" scroll-into-view="{{goodsToView}}" bindscroll="scroll">
+    <block wx:for="{{goodsWrap}}" wx:key="id">
+
+      <view class="goodsWrap-category" id='{{item.scrollId}}'>
+        <text style="font-size: 12px">{{item.name}}</text>
+      </view>
+
+      <block wx:for="{{item.goods}}" wx:for-item="goods" wx:key="id">
+        <view class='goods-item'>
+
+          <view class="goods-description">
+            <image class='goods-pic' mode='aspectFill' lazy-load="true" src="{{goods.pic}}_m" bindtap="toDetailsTap" data-id="{{goods.id}}"></image>
+
+            <view class='goods-info'>
+              <view class="goods-title" bindtap="toDetailsTap" data-id="{{goods.id}}">{{goods.name}}</view>
+              <view class='goods-price-line'>
+                  <view wx:if="{{hasToken}}" class="goods-price">￥{{goods.minPrice}} /{{goods.uom_name}}</view>
+                  <view wx:if="{{!hasToken}}" class="goods-price" bindtap="askPrice">￥询价</view>
+                  <addSubGoods wx:if="{{hasToken}}" goodsId="{{goods.id}}" goodsDetail="{{goods}}" buyNum="{{goods.buyNum}}" stores="{{goods.stores}}" bind:totalPriceChange='onTotalPriceChange'></addSubGoods>
+              </view>
+            </view>
+          </view>
+
+        </view>
+      </block>
+    </block>
+    <view style="height: 50px"></view>
+  </scroll-view>
+</view>
+
+<view class="jiesuan-box" hidden="{{hideSummaryPopup}}">
+  <view class="left-price">
+    <view class="shop-num">({{shopNum}})</view>
+    <image src="/images/cart/totalCart.png" class="cart-btn" bindtap="navigateToCartShop" />
+    <view class="total">¥ {{totalPrice}} + {{totalScore}} 积分</view>
+  </view>
+  <form bindsubmit="navigateToPayOrder" report-submit="true">
+  <button class="to-pay-btn" formType="submit">去结算</button>
+  </form>
+</view>

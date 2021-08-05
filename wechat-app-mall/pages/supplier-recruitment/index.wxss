@@ -1,0 +1,41 @@
+.input-box {
+  border: 1px solid #ddd;
+  width: 100%;
+  margin: 5px 5px 5px 0px;
+  padding: 2px;
+}
+
+.applyTableTitle {
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.content {
+  padding: 20px;
+}
+
+.btn-area button {
+  margin-top: 20rpx;
+  color: #fff;
+  background-color: #179b16;
+}
+
+.upload-icon {
+  position: relative;
+  max-width: 120rpx;
+  max-height: 120rpx;
+  padding: 10rpx 0px 10px 0px;
+}
+
+.delete-icon {
+  position: relative;
+  max-width: 40rpx;
+  max-height: 40rpx;
+  padding: 0px 10px 10px 0px;
+  margin-bottom: 35px;
+}
+
+.images {
+  display: flex;
+  flex-wrap: wrap;
+}

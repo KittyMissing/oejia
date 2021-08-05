@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="product_product_wechat_pay_fee" model="product.product">
+            <field name="name">微信支付手续费</field>
+            <field name="default_code">Wechat_Pay_Fee</field>
+            <field name="type">service</field>
+            <field name="sale_ok" eval="False"/>
+            <field name="purchase_ok" eval="False"/>
+            <field name="list_price">0.1</field>
+            <field name="taxes_id" eval="[(5,)]" />
+        </record>
+
+        <record id="product_product_score_deduct" model="product.product">
+            <field name="name">积分抵扣</field>
+            <field name="default_code">Score_Deduct</field>
+            <field name="type">service</field>
+            <field name="sale_ok" eval="False"/>
+            <field name="purchase_ok" eval="False"/>
+            <field name="list_price">0.1</field>
+            <field name="taxes_id" eval="[(5,)]" />
+        </record>
+
+        <record id="product_product_order_refund" model="product.product">
+            <field name="name">退款</field>
+            <field name="default_code">Order_Refund</field>
+            <field name="type">service</field>
+            <field name="sale_ok" eval="False"/>
+            <field name="purchase_ok" eval="False"/>
+            <field name="list_price">-0.1</field>
+            <field name="taxes_id" eval="[(5,)]" />
+	    <field name="active" eval="False" />
+        </record>
+
+    </data>
+</odoo>

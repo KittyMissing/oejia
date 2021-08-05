@@ -1,0 +1,108 @@
+.promotion-list{
+  background-color: #FFF;
+  border-bottom-left-radius: 25rpx;
+  border-bottom-right-radius: 25rpx;
+  height: 300rpx;
+  position: relative;
+}
+.promotion-list .image-container{
+  padding-top: 30rpx;
+  padding-left: 25rpx;
+  width: 240rpx;
+  height: 0;
+  padding-bottom: 240rpx;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+ 
+}
+.promotion-list .image-container .image-cover{
+  width: 240rpx;
+  height: 240rpx;
+  display: inline-block;
+  background: rgba(76, 76, 76, 0.5);
+  z-index: 1001;
+  position: absolute;
+  text-align: center
+}
+.promotion-list .image-container .image-cover .cover-info{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  display: inline-block;
+  background: rgba(76, 76, 76, 0.7);
+  z-index: 1002;
+  position: absolute;
+  font-size: 30rpx;
+  color: #FFF;
+  line-height: 150rpx;
+  top: 20%;
+  left: 20%;
+}
+.promotion-list .image-container .img{
+  width: 240rpx;
+  max-height: 240rpx;
+  position: absolute;
+}
+.promotion-list .goods-name{
+  vertical-align: top;
+  display: inline-block;
+  font-size: 32rpx;
+  font-weight: 500;
+  padding: 30rpx 0 0 30rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 450rpx;
+}
+.promotion-list .goods-price{
+  display: inline-block;
+  color: #fb2242;
+  font-size: 42rpx;
+  left: 300rpx;
+  position: absolute;
+  bottom: 20rpx;
+}
+.promotion-list .other-price{
+  display: inline-block;
+  color: #b2adb1;
+  font-size: 30rpx;
+  padding-left: 10rpx;
+  text-decoration: line-through;
+}
+.promotion-list .progress{
+  width: 200rpx;
+  position: absolute;
+  left: 300rpx;
+  bottom: 100rpx;
+}
+.promotion-list .progress-info{
+  display: inline-block;
+  color: #b2adb1;
+  font-size: 24rpx;
+  position: absolute;
+  left: 510rpx;
+  bottom: 92rpx;
+}
+.promotion-list .goods-index{
+  display: inline-block;
+  background-color: #f7f5f9;
+  position: absolute;
+  right: 18rpx;
+  top: 30rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  color: #c2bfc3;
+  padding: 0 14rpx;
+}
+.promotion-list .to-buy{
+  display: inline-block;
+  background-image: linear-gradient(to right, #a9d649 , #80c03b);
+  position: absolute;
+  right: 18rpx;
+  bottom: 30rpx;
+  border-radius: 30rpx;
+  font-size: 20rpx;
+  color: #FFF;
+  padding: 10rpx 20rpx;
+}

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="wxapp_refund_view_tree_1803" model="ir.ui.view">
+            <field name="name">wxapp.refund.view_tree</field>
+            <field name="model">wxapp.refund</field>
+            <field name="type">tree</field>
+            <field name="priority">999</field>
+            <field name="arch" type="xml">
+                <tree string="售后记录">
+               <field name="wechat_user_id"/>
+               <field name="rtype"/>
+               <field name="logistics_status"/>
+               <field name="amount"/>
+               <field name="order_id"/>
+               <field name="reason"/>
+               <field name="remark"/>
+               <field name="status"/>
+                </tree>
+            </field>
+        </record>
+        <record id="wxapp_refund_view_form_1804" model="ir.ui.view">
+            <field name="name">wxapp.refund.view_form</field>
+            <field name="model">wxapp.refund</field>
+            <field name="type">form</field>
+            <field name="priority">999</field>
+            <field name="arch" type="xml">
+                <form string="售后记录">
+                <header>
+                    <button name="to_refused" type="object" string="拒绝" attrs="{'invisible': [('status', '!=', '0')]}"/>
+                    <button name="to_doing" type="object" string="置为处理中" attrs="{'invisible': [('status', '!=', '0')]}"/>
+                    <button name="to_completed" type="object" string="置为已完成" attrs="{'invisible': [('status', '!=', '3')]}"/>
+                    <field name="status" widget="statusbar" statusbar_visible="0,3,4" readonly="1"/>
+                </header>
+                    <sheet>
+                    <group>
+               <field name="order_id"/>
+               <field name="wechat_user_id"/>
+               <field name="rtype"/>
+               <field name="logistics_status"/>
+               <field name="amount"/>
+               <field name="reason"/>
+               <field name="remark"/>
+               <field name="status"/>
+               <field name="image_ids"/>
+                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="wxapp_refund_action_623" model="ir.actions.act_window">
+            <field name="name">售后记录</field>
+            <field name="res_model">wxapp.refund</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('wxapp_refund_view_tree_1803')}),
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('wxapp_refund_view_form_1804')}),
+                    ]"/>
+        </record>
+        <menuitem action="wxapp_refund_action_623" id="wxapp_refund_menuitem_477_1574517825" name="售后记录" parent="oejia_weshop.parent_menu_319_1536754696" sequence="10" groups="oejia_weshop.group_wxapp_sale"/>
+
+    </data>
+</openerp>

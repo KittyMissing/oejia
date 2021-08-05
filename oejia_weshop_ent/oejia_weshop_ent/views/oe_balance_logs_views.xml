@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="oe_balance_logs_view_tree_1742" model="ir.ui.view">
+            <field name="name">oe.balance.logs.view_tree</field>
+            <field name="model">oe.balance.logs</field>
+            <field name="type">tree</field>
+            <field name="priority">999</field>
+            <field name="arch" type="xml">
+                <tree string="钱包明细" create="0" edit="0" delete="0">
+               <field name="partner_id"/>
+               <field name="behavior"/>
+               <field name="log_type"/>
+               <field name="amount"/>
+               <field name="balance_left"/>
+               <field name="remark"/>
+                </tree>
+            </field>
+        </record>
+        <record id="oe_balance_logs_view_form_1743" model="ir.ui.view">
+            <field name="name">oe.balance.logs.view_form</field>
+            <field name="model">oe.balance.logs</field>
+            <field name="type">form</field>
+            <field name="priority">999</field>
+            <field name="arch" type="xml">
+                <form string="钱包明细" version="7.0" create="0" edit="0" delete="0">
+                    <sheet>
+                    <group>
+               <field name="partner_id"/>
+               <field name="behavior"/>
+               <field name="log_type"/>
+               <field name="amount"/>
+               <field name="balance_left"/>
+               <field name="remark"/>
+                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="oe_balance_logs_action_601" model="ir.actions.act_window">
+            <field name="name">钱包明细</field>
+            <field name="res_model">oe.balance.logs</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('oe_balance_logs_view_tree_1742')}),
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('oe_balance_logs_view_form_1743')}),
+                    ]"/>
+        </record>
+        <menuitem action="oe_balance_logs_action_601" id="oe_balance_logs_menuitem_453_1566813556" name="钱包明细" parent="oejia_weshop.parent_menu_757_1611842705" sequence="10"/>
+
+    </data>
+</openerp>

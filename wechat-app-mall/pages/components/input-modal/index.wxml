@@ -1,0 +1,14 @@
+<view class="modal-mask"></view>
+<view class="modal-dialog">
+  <view class="modal-title">修改购买数量</view>
+  <view class="modal-content">
+    <view class="jian-btn {{buyNum==1? 'disabled' : ''}}" catchtap="jianBtnTap" data-index="{{index}}">-</view>
+    <view>
+      <input type="number" class="input-box" value="{{buyNum}}" name="buyNum" bindinput="setBuyNum" auto-focus="true"/> </view>
+    <view class="jia-btn {{item.number==curTouchGoodStore? 'disabled' : ''}}" catchtap="jiaBtnTap" data-index="{{index}}">+</view>
+  </view>
+  <view class="modal-footer">
+    <view class="btn-cancel" bindtap="cancelBuyNum">我再想想</view>
+    <view class="btn-confirm" bindtap="confirmBuyNum">确定</view>
+  </view>
+</view>

@@ -1,0 +1,89 @@
+<!--index.wxml-->
+<!--1px = 750/320 = 2.34rpx;-->
+<view class="container">
+   <view class="swiper-container">
+        <swiper class="swiper_box" 
+                    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange">
+            <block wx:for="{{banners}}" wx:key="id">
+                <swiper-item>
+                    <image bindtap="tapBanner" data-id="{{item.businessId}}" src="{{item.picUrl}}_m" class="slide-image" width="750rpx" height="562.5rpx"/>
+                </swiper-item>
+            </block>
+        </swiper>
+        <view class="dots">  
+            <block wx:for="{{banners}}" wx:key="unique">  
+                <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>  
+            </block>  
+        </view>  
+   </view>
+    <view class="type-container">
+        <scroll-view class="type-navbar" scroll-x="true">
+            <view class="type-box" wx:for-items="{{categories}}" wx:key="id">
+                <view id="{{item.id}}" class="type-navbar-item {{activeCategoryId == item.id ? 'type-item-on' : ''}}" bindtap="tabClick">
+                    {{item.name}}
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="search-view" style="background:{{ scrollTop === 0 ?'-webkit-linear-gradient(top, rgba(105,195,170, 1), rgba(105,195,170, 0.3))' :( scrollTop<200 ? 'rgba(105,195,170,'+(scrollTop/400+0.3) +')' : 'rgba(105,195,170,1)')  }} ">
+    <view class="search-content">
+      <image src="/images/search-pic.png" class="search-icon" />
+      <input placeholder="请输入搜索内容" class="search-input" maxlength="30" confirm-type="搜索" bindinput='listenerSearchInput' bindconfirm='toSearch'>
+      </input>
+      <button class='search-btn' bindtap="toSearch">搜索
+      </button>
+    </view>
+  </view>
+    <view wx:if="{{noticeList}}" class="notice">
+      <view class="notice_iteml">公告：</view>
+      <swiper wx:if="{{noticeList}}" class="notice_swiper" vertical="true" autoplay="true" circular="true" interval="3000">
+        <navigator wx:for-items="{{noticeList.dataList}}" wx:key="id" url="/pages/notice/show?id={{item.id}}" open-type="navigate">
+          <swiper-item >
+            <view class="notice_itemr">{{item.title}}</view>
+          </swiper-item>
+        </navigator>
+      </swiper>
+    </view>
+    <view class="coupons" hidden="{{hasNoCoupons}}">
+        <scroll-view class="coupons-scroll" scroll-x="true">
+            <view class="coupons-item" wx:for-items="{{coupons}}" wx:for-index="idx" wx:key="id"  bindtap="gitCoupon" data-id="{{item.id}}" data-pwd="{{item.pwd}}">
+               <view style="font-size: 35rpx" wx:if="{{item.moneyMin == item.moneyMax}}"> ￥ {{item.moneyMax}} </view>
+               <view style="font-size: 35rpx" wx:else> ￥ {{item.moneyMin}} - {{item.moneyMax}} </view>
+               <view> {{item.name}} </view>
+               <view> 满 {{item.moneyHreshold}} 元使用 </view>
+               <view wx:if="{{item.dateEndType == 0}}"> {{item.dateEnd}} 前有效 </view>
+               <view wx:if="{{item.dateEndType == 1}}"> 领取 {{item.dateEndDays}} 天内有效 </view>
+            </view>
+        </scroll-view>
+    </view>
+    <block wx:for="{{promotionList}}" wx:key="{{id}}">
+ 	    <promotionCard goodsList="{{item.goodsList}}" promotionId="{{item.promotionId}}" promotionType="{{item.promotionType}}" endTime="{{item.endTime}}" startTime="{{item.startTime}}"  bind:refresh="refreshPromotion" />
+ 	  </block>
+    <view class="goods-container">
+        <view class="goods-box" wx:for-items="{{goods}}" wx:key="{{index}}">
+           <view class="img-box"  bindtap="toDetailsTap"  data-id="{{item.id}}">
+              <image src="{{item.pic}}_m" class="image" mode="aspectFill" lazy-load="true"/>
+           </view>
+           <view class="goods-title"  bindtap="toDetailsTap" data-id="{{item.id}}" data-hideShopPopup="true">{{item.name}}</view>
+           <view style='display:flex;'>
+            <view wx:if="{{hasToken}}" class="goods-price">¥ {{item.minPrice}} /{{item.uom_name}}</view>
+            <view wx:if="{{!hasToken}}" class="goods-price" bindtap="askPrice">￥询价</view>
+            <view wx:if="{{item.originalPrice && item.originalPrice > 0}}" class="goods-price" style='color:#aaa;text-decoration:line-through'>¥ {{item.originalPrice}}</view>
+             <addSubGoods wx:if="{{hasToken}}" goodsId="{{item.id}}" goodsDetail="{{item}}" buyNum="{{item.buyNum}}" stores="{{item.stores}}" bind:totalPriceChange='onTotalPriceChange'></addSubGoods>
+        </view>  
+        </view>
+    </view>
+    <view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-goods">没有更多啦</view>
+    <view class="jiesuan-box" hidden="{{hideSummaryPopup}}">
+  <view class="left-price">
+    <view class="shop-num">({{shopNum}})</view>
+    <image src="/images/cart/totalCart.png" class="cart-btn" bindtap="navigateToCartShop" />
+    <view class="total">¥ {{totalPrice}} + {{totalScore}} 积分</view>
+  </view>
+  <form bindsubmit="navigateToPayOrder" report-submit="true">
+  <button wx:if="{{totalPrice > 0}}" class="to-pay-btn" formType="submit">去结算</button>
+  <view wx:else class="to-pay-btn to-pay-btn-disabled" formType="submit">去结算</view>
+  </form>
+</view>
+</view>
+
